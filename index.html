@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellabeat Case Study — Kai-Wen Huang</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1D9E75;
+    --green-light: #E1F5EE;
+    --green-mid: #5DCAA5;
+    --ink: #1a1a18;
+    --ink-mid: #4a4a48;
+    --ink-light: #8a8a88;
+    --cream: #faf9f6;
+    --cream-dark: #f0ede6;
+    --border: rgba(26,26,24,0.1);
+    --serif: 'DM Serif Display', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--cream); color: var(--ink); font-size: 16px; line-height: 1.7; font-weight: 300; }
+
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,249,246,0.92); backdrop-filter: blur(12px);
+    border-bottom: 0.5px solid var(--border);
+    padding: 0 2rem; display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  .logo { font-family: var(--serif); font-size: 18px; letter-spacing: -0.02em; }
+  nav { display: flex; gap: 2rem; }
+  nav a { font-size: 13px; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  nav a:hover { color: var(--green); }
+  .header-links { display: flex; gap: 1.5rem; }
+  .header-links a { font-size: 13px; color: var(--ink-mid); text-decoration: none; transition: color 0.2s; }
+  .header-links a:hover { color: var(--green); }
+
+  .hero { padding: 140px 2rem 100px; max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; background: var(--green-light); color: var(--green); border-radius: 20px; padding: 5px 14px; font-size: 12px; font-weight: 500; margin-bottom: 1.5rem; }
+  .pill::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--green); }
+  h1 { font-family: var(--serif); font-size: clamp(38px, 5vw, 56px); line-height: 1.08; letter-spacing: -0.03em; margin-bottom: 1.25rem; }
+  h1 em { font-style: italic; color: var(--green); }
+  .hero-desc { font-size: 15px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 2rem; }
+  .hero-meta { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1.5rem; }
+  .hero-meta span { font-size: 12px; color: var(--ink-light); }
+  .hero-meta strong { color: var(--ink-mid); font-weight: 500; }
+  .hero-links { display: flex; gap: 12px; }
+  .btn { display: inline-flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; text-decoration: none; transition: all 0.2s; border: 0.5px solid var(--border); }
+  .btn-primary { background: var(--green); color: white; border-color: var(--green); }
+  .btn-primary:hover { background: #0F6E56; }
+  .btn-secondary { background: white; color: var(--ink-mid); }
+  .btn-secondary:hover { color: var(--green); border-color: var(--green); }
+
+  .hero-right { display: flex; flex-direction: column; gap: 12px; }
+  .stat-card { background: white; border: 0.5px solid var(--border); border-radius: 16px; padding: 1.25rem 1.5rem; transition: transform 0.2s, box-shadow 0.2s; }
+  .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+  .stat-card .num { font-family: var(--serif); font-size: 36px; color: var(--green); line-height: 1; margin-bottom: 4px; }
+  .stat-card .label { font-size: 13px; color: var(--ink-mid); }
+  .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  section { padding: 80px 2rem; }
+  .inner { max-width: 900px; margin: 0 auto; }
+  .section-label { font-size: 11px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); margin-bottom: 12px; }
+  h2 { font-family: var(--serif); font-size: clamp(28px, 3.5vw, 40px); letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; }
+  .lead { font-size: 15px; color: var(--ink-mid); max-width: 600px; margin-bottom: 3rem; }
+
+  .process-section { background: var(--ink); color: white; }
+  .process-section h2 { color: white; }
+  .process-section .section-label { color: var(--green-mid); }
+  .process-section .lead { color: rgba(255,255,255,0.5); }
+  .process-steps { display: grid; grid-template-columns: repeat(6, 1fr); }
+  .process-step { padding: 1.5rem 1rem; border-right: 0.5px solid rgba(255,255,255,0.08); position: relative; }
+  .process-step:last-child { border-right: none; }
+  .step-num { font-family: var(--serif); font-size: 32px; color: rgba(255,255,255,0.12); margin-bottom: 8px; }
+  .step-title { font-size: 14px; font-weight: 500; color: white; margin-bottom: 6px; }
+  .step-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .step-done { position: absolute; top: 1rem; right: 1rem; width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .step-pending { position: absolute; top: 1rem; right: 1rem; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+
+  .findings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .finding-card { background: white; border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; }
+  .finding-card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.07); }
+  .finding-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green); }
+  .finding-card.amber::before { background: #EF9F27; }
+  .finding-card.blue::before { background: #378ADD; }
+  .finding-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--green-light); color: var(--green); margin-bottom: 10px; }
+  .finding-card.amber .finding-tag { background: #FAEEDA; color: #854F0B; }
+  .finding-card.blue .finding-tag { background: #E6F1FB; color: #185FA5; }
+  .finding-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; line-height: 1.4; }
+  .finding-card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+
+  .charts-section { background: var(--cream-dark); }
+  .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .chart-card { background: white; border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem; }
+  .chart-card h4 { font-size: 13px; font-weight: 500; color: var(--ink-mid); margin-bottom: 1.25rem; }
+  .chart-card.wide { grid-column: span 2; }
+  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
+  .bar-row { display: flex; align-items: center; gap: 10px; }
+  .bar-label { font-size: 11px; color: var(--ink-light); width: 90px; text-align: right; flex-shrink: 0; }
+  .bar-track { flex: 1; background: var(--cream-dark); border-radius: 4px; height: 20px; }
+  .bar-fill { height: 100%; border-radius: 4px; display: flex; align-items: center; padding: 0 8px; font-size: 11px; font-weight: 500; color: white; }
+  .donut-wrap { display: flex; align-items: center; gap: 1.5rem; }
+  .legend { display: flex; flex-direction: column; gap: 8px; }
+  .leg-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--ink-mid); }
+  .leg-dot { width: 9px; height: 9px; border-radius: 50%; flex-shrink: 0; }
+
+  .recs { display: flex; flex-direction: column; }
+  .rec { display: grid; grid-template-columns: 60px 1fr; gap: 1.5rem; padding: 2rem 0; border-bottom: 0.5px solid var(--border); }
+  .rec:last-child { border-bottom: none; }
+  .rec-num { font-family: var(--serif); font-size: 48px; color: var(--cream-dark); line-height: 1; align-self: start; padding-top: 4px; }
+  .rec-body h3 { font-size: 17px; font-weight: 500; margin-bottom: 8px; }
+  .rec-body p { font-size: 14px; color: var(--ink-mid); line-height: 1.7; }
+  .rec-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; background: var(--green-light); color: var(--green); margin-bottom: 10px; }
+
+  .data-section { background: white; }
+  .data-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .data-card { border: 0.5px solid var(--border); border-radius: 16px; padding: 1.5rem; }
+  .data-card h4 { font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+  .data-card p { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+  .data-card ul { padding-left: 1rem; }
+  .data-card ul li { font-size: 13px; color: var(--ink-mid); margin-bottom: 4px; }
+  .data-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: 20px; margin-bottom: 10px; }
+  .ok { background: var(--green-light); color: var(--green); }
+  .warn { background: #FAEEDA; color: #854F0B; }
+
+  .v2-banner { background: var(--ink); color: white; border-radius: 16px; padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; margin-top: 3rem; }
+  .v2-badge { background: var(--green); color: white; font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; white-space: nowrap; }
+  .v2-text { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.6; }
+  .v2-text strong { color: white; font-weight: 500; }
+
+  footer { background: var(--ink); color: rgba(255,255,255,0.4); padding: 40px 2rem; text-align: center; font-size: 13px; }
+  footer a { color: var(--green-mid); text-decoration: none; }
+  footer strong { color: white; font-weight: 500; }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; }
+  .footer-links a { font-size: 13px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--green-mid); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-left { animation: fadeUp 0.7s ease both; }
+  .hero-right { animation: fadeUp 0.7s ease 0.1s both; }
+
+  @media (max-width: 700px) {
+    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 120px 1.25rem 60px; }
+    .process-steps { grid-template-columns: repeat(3,1fr); }
+    .findings-grid, .charts-grid, .data-grid { grid-template-columns: 1fr; }
+    .chart-card.wide { grid-column: span 1; }
+    nav, .header-links { display: none; }
+    section { padding: 60px 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Kai-Wen Huang</div>
+  <nav>
+    <a href="#process">Process</a>
+    <a href="#findings">Findings</a>
+    <a href="#charts">Data</a>
+    <a href="#recommendations">Recommendations</a>
+  </nav>
+  <div class="header-links">
+    <a href="https://github.com/karen-kaiwen/bellabeat-case-study" target="_blank">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/kai-wen-huang" target="_blank">LinkedIn ↗</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-left">
+    <div class="pill">Google Data Analytics Capstone</div>
+    <h1>How can <em>Bellabeat</em> play it smart?</h1>
+    <p class="hero-desc">Analyzing FitBit smart device data to uncover behavioral trends and shape marketing strategy for a women's wellness brand. Completed using R and Tableau.</p>
+    <div class="hero-meta">
+      <span><strong>Tools:</strong> R · Tableau</span>
+      <span><strong>Data:</strong> FitBit Fitness Tracker Dataset (Kaggle, CC0)</span>
+      <span><strong>Focus product:</strong> Bellabeat Leaf wellness tracker</span>
+    </div>
+    <div class="hero-links">
+      <a href="https://github.com/karen-kaiwen/bellabeat-case-study" target="_blank" class="btn btn-primary">View on GitHub ↗</a>
+      <a href="#findings" class="btn btn-secondary">See findings ↓</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-row">
+      <div class="stat-card"><div class="num">33</div><div class="label">FitBit users tracked</div></div>
+      <div class="stat-card"><div class="num">31</div><div class="label">Days of data</div></div>
+    </div>
+    <div class="stat-card"><div class="num">~1,000 kcal</div><div class="label">Daily calorie gap between active and sedentary users — the core insight driving our recommendations</div></div>
+    <div class="stat-card"><div class="num">85%</div><div class="label">Users are heavy device wearers — an engaged base ready to be nudged toward better habits</div></div>
+  </div>
+</div>
+
+<section class="process-section" id="process">
+  <div class="inner">
+    <div class="section-label">Framework</div>
+    <h2>Six-phase analysis process</h2>
+    <p class="lead">Following the Google Data Analytics framework from business question to actionable recommendation.</p>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-done"></div>
+        <div class="step-num">01</div>
+        <div class="step-title">Ask</div>
+        <div class="step-desc">Define business task: understand smart device usage trends to guide Bellabeat's marketing strategy for the Leaf tracker.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-done"></div>
+        <div class="step-num">02</div>
+        <div class="step-title">Prepare</div>
+        <div class="step-desc">Sourced FitBit Fitness Tracker Dataset from Kaggle (CC0). Assessed credibility and noted limitations: small sample, no demographic data.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-done"></div>
+        <div class="step-num">03</div>
+        <div class="step-title">Process</div>
+        <div class="step-desc">Cleaned data in R: removed duplicates, standardized date/time formats, created derived columns to classify users by activity type.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-done"></div>
+        <div class="step-num">04</div>
+        <div class="step-title">Analyze</div>
+        <div class="step-desc">Segmented users into four activity types; analyzed calorie burn differences, sedentary patterns, heart rate timing, and device engagement.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-done"></div>
+        <div class="step-num">05</div>
+        <div class="step-title">Share</div>
+        <div class="step-desc">Built interactive Tableau dashboard visualizing user type breakdown, sedentary patterns, calorie rhythm, and hourly heart rate trends.</div>
+      </div>
+      <div class="process-step">
+        <div class="step-pending"></div>
+        <div class="step-num">06</div>
+        <div class="step-title">Act</div>
+        <div class="step-desc">Produced three data-driven marketing recommendations for Bellabeat's Leaf tracker, targeting low-activity users.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="findings">
+  <div class="inner">
+    <div class="section-label">Analysis</div>
+    <h2>Key findings</h2>
+    <p class="lead">Four insights drawn from activity patterns, calorie burn, sedentary behavior, and device engagement data.</p>
+    <div class="findings-grid">
+      <div class="finding-card">
+        <div class="finding-tag">Finding 1 — Calorie Gap</div>
+        <h3>Active users burn ~1,000 more calories per day</h3>
+        <p>Very Active and Fairly Active users burn approximately 1,000 more calories daily than Sedentary and Lightly Active users. This significant gap shows that even moderate increases in daily movement can have a meaningful impact on energy expenditure — making it a powerful message for motivating low-activity users.</p>
+      </div>
+      <div class="finding-card amber">
+        <div class="finding-tag">Finding 2 — Sedentary Pattern</div>
+        <h3>Fairly Active users sit less than Very Active users</h3>
+        <p>Counterintuitively, Fairly Active users log fewer sedentary hours than Very Active users. This suggests that consistent, moderate movement distributed throughout the day reduces overall sitting time more effectively than intense but concentrated workouts — a key insight for designing habit-nudge features.</p>
+      </div>
+      <div class="finding-card blue">
+        <div class="finding-tag">Finding 3 — Timing</div>
+        <h3>Heart rate peaks at noon; calories peak at 5–7 PM</h3>
+        <p>Heart rate reaches its daily high around 12–16h, while calorie burn peaks later at 17–19h. This delayed metabolic response suggests that encouraging midday activity can maximize calorie burn in the hours that follow — directly applicable to notification timing strategy.</p>
+      </div>
+      <div class="finding-card">
+        <div class="finding-tag">Finding 4 — Engagement</div>
+        <h3>85% of users wear their device consistently</h3>
+        <p>The vast majority of users are heavy device wearers, meaning they already have a strong daily habit of wearing the tracker. The challenge is not adoption — it is converting passive wearing into active behavior change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="charts-section" id="charts">
+  <div class="inner">
+    <div class="section-label">Visualizations</div>
+    <h2>Data at a glance</h2>
+    <p class="lead">Key charts from the Tableau dashboard. All values represent averages across the 31-day observation window.</p>
+    <div class="charts-grid">
+      <div class="chart-card">
+        <h4>User type distribution (n = 33)</h4>
+        <div class="donut-wrap">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#f0ede6" stroke-width="18"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#1D9E75" stroke-width="18" stroke-dasharray="76 175" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#5DCAA5" stroke-width="18" stroke-dasharray="51 175" stroke-dashoffset="-76" transform="rotate(-90 55 55)"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#9FE1CB" stroke-width="18" stroke-dasharray="51 175" stroke-dashoffset="-127" transform="rotate(-90 55 55)"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#d0f0e4" stroke-width="18" stroke-dasharray="43 175" stroke-dashoffset="-178" transform="rotate(-90 55 55)"/>
+          </svg>
+          <div class="legend">
+            <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Sedentary — 8</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#5DCAA5"></div>Fairly Active — 9</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#9FE1CB"></div>Lightly Active — 9</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#d0f0e4"></div>Very Active — 7</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h4>Device engagement (user level)</h4>
+        <div class="donut-wrap">
+          <svg width="110" height="110" viewBox="0 0 110 110">
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#f0ede6" stroke-width="18"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#1D9E75" stroke-width="18" stroke-dasharray="148 175" stroke-dashoffset="0" transform="rotate(-90 55 55)"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#9FE1CB" stroke-width="18" stroke-dasharray="22 175" stroke-dashoffset="-148" transform="rotate(-90 55 55)"/>
+            <circle cx="55" cy="55" r="40" fill="none" stroke="#FAC775" stroke-width="18" stroke-dasharray="5 175" stroke-dashoffset="-170" transform="rotate(-90 55 55)"/>
+          </svg>
+          <div class="legend">
+            <div class="leg-item"><div class="leg-dot" style="background:#1D9E75"></div>Heavy — 29 users</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#9FE1CB"></div>Moderate — 3 users</div>
+            <div class="leg-item"><div class="leg-dot" style="background:#FAC775"></div>Light — 1 user</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h4>Avg sedentary hours per day by user type</h4>
+        <div class="bar-chart">
+          <div class="bar-row"><div class="bar-label">Sedentary</div><div class="bar-track"><div class="bar-fill" style="width:95%;background:#E24B4A">19.0 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Lightly Active</div><div class="bar-track"><div class="bar-fill" style="width:82%;background:#EF9F27">16.5 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Fairly Active</div><div class="bar-track"><div class="bar-fill" style="width:73%;background:#378ADD">14.7 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Very Active</div><div class="bar-track"><div class="bar-fill" style="width:67%;background:#1D9E75">13.5 h</div></div></div>
+        </div>
+      </div>
+      <div class="chart-card">
+        <h4>Avg total active hours per day by user type</h4>
+        <div class="bar-chart">
+          <div class="bar-row"><div class="bar-label">Very Active</div><div class="bar-track"><div class="bar-fill" style="width:86%;background:#1D9E75">4.3 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Fairly Active</div><div class="bar-track"><div class="bar-fill" style="width:64%;background:#378ADD">3.2 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Lightly Active</div><div class="bar-track"><div class="bar-fill" style="width:54%;background:#EF9F27">2.7 h</div></div></div>
+          <div class="bar-row"><div class="bar-label">Sedentary</div><div class="bar-track"><div class="bar-fill" style="width:38%;background:#E24B4A">1.9 h</div></div></div>
+        </div>
+      </div>
+      <div class="chart-card wide">
+        <h4>User type × device engagement level breakdown</h4>
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <thead>
+            <tr style="border-bottom:0.5px solid var(--border);">
+              <th style="padding:8px 12px;text-align:left;color:var(--ink-light);font-weight:500;">User type</th>
+              <th style="padding:8px 12px;text-align:center;color:var(--ink-light);font-weight:500;">Heavy user</th>
+              <th style="padding:8px 12px;text-align:center;color:var(--ink-light);font-weight:500;">Moderate user</th>
+              <th style="padding:8px 12px;text-align:center;color:var(--ink-light);font-weight:500;">Light user</th>
+              <th style="padding:8px 12px;text-align:center;color:var(--ink-light);font-weight:500;">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:0.5px solid var(--border);"><td style="padding:10px 12px;font-weight:500;">Fairly Active</td><td style="padding:10px 12px;text-align:center;">8</td><td style="padding:10px 12px;text-align:center;">1</td><td style="padding:10px 12px;text-align:center;color:var(--ink-light);">—</td><td style="padding:10px 12px;text-align:center;font-weight:500;">9</td></tr>
+            <tr style="border-bottom:0.5px solid var(--border);"><td style="padding:10px 12px;font-weight:500;">Lightly Active</td><td style="padding:10px 12px;text-align:center;">7</td><td style="padding:10px 12px;text-align:center;">2</td><td style="padding:10px 12px;text-align:center;color:var(--ink-light);">—</td><td style="padding:10px 12px;text-align:center;font-weight:500;">9</td></tr>
+            <tr style="border-bottom:0.5px solid var(--border);"><td style="padding:10px 12px;font-weight:500;">Very Active</td><td style="padding:10px 12px;text-align:center;">7</td><td style="padding:10px 12px;text-align:center;color:var(--ink-light);">—</td><td style="padding:10px 12px;text-align:center;color:var(--ink-light);">—</td><td style="padding:10px 12px;text-align:center;font-weight:500;">7</td></tr>
+            <tr><td style="padding:10px 12px;font-weight:500;">Sedentary</td><td style="padding:10px 12px;text-align:center;">7</td><td style="padding:10px 12px;text-align:center;color:var(--ink-light);">—</td><td style="padding:10px 12px;text-align:center;">1</td><td style="padding:10px 12px;text-align:center;font-weight:500;">8</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="recommendations">
+  <div class="inner">
+    <div class="section-label">Act</div>
+    <h2>Marketing recommendations</h2>
+    <p class="lead">Three data-driven recommendations for Bellabeat's Leaf tracker, focused on converting passive wearers into active users.</p>
+    <div class="recs">
+      <div class="rec">
+        <div class="rec-num">01</div>
+        <div class="rec-body">
+          <div class="rec-tag">Audience — Low-Activity Users</div>
+          <h3>Use the 1,000 kcal gap as a motivational message</h3>
+          <p>The data shows a ~1,000 kcal daily difference between active and sedentary users. Rather than framing this as a gap to shame users, Bellabeat can flip it into an opportunity: show low-activity users how close they are to burning significantly more calories with small, incremental changes. In-app progress visualizations and milestone nudges can make this gap feel bridgeable, not overwhelming. <em>Suggested message: "Just 30 more active minutes today could change everything."</em></p>
+        </div>
+      </div>
+      <div class="rec">
+        <div class="rec-num">02</div>
+        <div class="rec-body">
+          <div class="rec-tag">Timing — Notifications &amp; Content</div>
+          <h3>Send movement reminders at midday, not just morning</h3>
+          <p>Heart rate peaks around noon while calorie burn peaks in the late afternoon — suggesting the body is metabolically primed for activity at midday. Bellabeat should time in-app reminders and social content to reach users at lunch hour (12–14h), when a short burst of movement can trigger elevated calorie burn throughout the rest of the day.</p>
+        </div>
+      </div>
+      <div class="rec">
+        <div class="rec-num">03</div>
+        <div class="rec-body">
+          <div class="rec-tag">Product — Feature Direction</div>
+          <h3>Promote "movement snacking" for sedentary users</h3>
+          <p>Fairly Active users log fewer sedentary hours than Very Active users — suggesting that short, frequent activity breaks are more effective at reducing sitting time than concentrated workouts. Bellabeat's Leaf tracker is ideal for this pattern: worn passively, it can vibrate to prompt movement breaks. Marketing should position the Leaf not as a "workout tracker" but as an "all-day movement companion" — accessible to users who don't identify as athletes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="data-section">
+  <div class="inner">
+    <div class="section-label">Prepare</div>
+    <h2>Data sources &amp; limitations</h2>
+    <p class="lead">Full transparency about what the data covers — and where it falls short.</p>
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-tag ok">Primary source</div>
+        <h4>FitBit Fitness Tracker Data</h4>
+        <p>Kaggle dataset, CC0 Public Domain license. Contains minute-level physical activity, heart rate, sleep logs, and daily step counts from 33 consenting FitBit users over April 12 – May 12, 2016.</p>
+      </div>
+      <div class="data-card">
+        <div class="data-tag ok">Variables analyzed</div>
+        <ul>
+          <li>Daily total steps &amp; active minutes</li>
+          <li>Sedentary minutes per day</li>
+          <li>Hourly calorie burn</li>
+          <li>Hourly average heart rate</li>
+          <li>Device wear time (engagement level)</li>
+        </ul>
+      </div>
+      <div class="data-card">
+        <div class="data-tag warn">Known limitations</div>
+        <ul>
+          <li>Small sample (n = 33) — limited statistical power</li>
+          <li>Data from 2016 — behavioral patterns may have shifted</li>
+          <li>No gender, age, or geographic metadata</li>
+          <li>Potential self-selection bias among participants</li>
+        </ul>
+      </div>
+      <div class="data-card">
+        <div class="data-tag ok">Cleaning steps (R)</div>
+        <ul>
+          <li>Removed duplicate rows across all tables</li>
+          <li>Standardized date and time formats</li>
+          <li>Classified users by average daily steps into 4 activity types</li>
+          <li>Merged daily activity with hourly calorie and heart rate tables</li>
+        </ul>
+      </div>
+    </div>
+    <div class="v2-banner">
+      <div class="v2-badge">Coming soon</div>
+      <div class="v2-text"><strong>Version 2 — Python + SQL rebuild in progress.</strong> This analysis was completed in R. I am currently rebuilding the data pipeline using Python and SQL to strengthen reproducibility and practice industry-standard workflows. The updated version will be added to this repository.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/karen-kaiwen/bellabeat-case-study" target="_blank">GitHub Repository ↗</a>
+    <a href="https://www.linkedin.com/in/kai-wen-huang" target="_blank">LinkedIn ↗</a>
+    <a href="#process">Back to top ↑</a>
+  </div>
+  <p><strong>Kai-Wen Huang</strong> &nbsp;·&nbsp; Google Data Analytics Capstone &nbsp;·&nbsp; Bellabeat Case Study</p>
+  <p style="margin-top:6px;">Dataset: <a href="https://www.kaggle.com/datasets/arashnic/fitbit" target="_blank">FitBit Fitness Tracker Data</a> on Kaggle (CC0 Public Domain)</p>
+</footer>
+
+</body>
+</html>
