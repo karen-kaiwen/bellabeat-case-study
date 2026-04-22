@@ -1,7 +1,11 @@
 # Bellabeat Smart Device Analysis
 Analyzing FitBit fitness tracker data to uncover behavioral trends among smart device users, and applying those insights to inform Bellabeat's marketing strategy for the **Leaf wellness tracker**.
  
-`R` `tidyverse` `Tableau` `Google Data Analytics Capstone` `License: MIT`
+![R](https://img.shields.io/badge/R-4.0%2B-276DC3?logo=r&logoColor=white)
+![tidyverse](https://img.shields.io/badge/tidyverse-1.3%2B-1A162D?logo=r&logoColor=white)
+![Tableau](https://img.shields.io/badge/Tableau-E97627?logo=tableau&logoColor=white)
+![Google Data Analytics](https://img.shields.io/badge/Google_Data_Analytics-Capstone-4285F4?logo=google&logoColor=white)
+![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
  
 🔗 **[View full case study →](https://karen-kaiwen.github.io/bellabeat-case-study/)**
  
