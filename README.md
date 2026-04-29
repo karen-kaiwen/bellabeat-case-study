@@ -10,8 +10,8 @@ Analyzing FitBit fitness tracker data to uncover behavioral trends among smart d
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
  
 🔗 **[View R Markdown Case Study →](https://karen-kaiwen.github.io/bellabeat-case-study/)**
-📊 **[View Tableau Dashboard →](https://public.tableau.com/views/BellaBeatCaseStudy_17660381314980/1)**
 🐍 **[View Python + SQL Notebook (Kaggle) →](https://www.kaggle.com/code/kaiwenhuang123/bellabeat-case-study)**
+📊 **[View Tableau Dashboard →](https://public.tableau.com/shared/22QGRHM8T?:display_count=n&:origin=viz_share_link)**
  
 ---
  
