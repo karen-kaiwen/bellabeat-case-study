@@ -10,7 +10,7 @@ Analyzing FitBit fitness tracker data to uncover behavioral trends among smart d
 ![Google Data Analytics](https://img.shields.io/badge/Google_Data_Analytics-Capstone-4285F4?logo=google&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-🔗 **[View R Markdown Case Study →](https://karen-kaiwen.github.io/bellabeat-case-study/)**
+🔗 **[View R Markdown Case Study →]([https://karen-kaiwen.github.io/bellabeat-case-study/](https://karen-kaiwen.github.io/bellabeat-case-study/How-Can-a-Wellness-Technology-Company-Play-It-Smart-V4.html))**
 🐍 **[View Python + SQL Notebook (Kaggle) →](https://www.kaggle.com/code/kaiwenhuang123/bellabeat-case-study)**
 📊 **[View Tableau Dashboard →](https://public.tableau.com/shared/22QGRHM8T?:display_count=n&:origin=viz_share_link)**
 
@@ -52,7 +52,7 @@ The full analysis is documented across two reports:
 
 | Report | Tools | Link |
 |--------|-------|------|
-| R Markdown Case Study | R (tidyverse) | [View Report](https://karen-kaiwen.github.io/bellabeat-case-study/) |
+| R Markdown Case Study | R (tidyverse) | [View Report]([https://karen-kaiwen.github.io/bellabeat-case-study/](https://karen-kaiwen.github.io/bellabeat-case-study/How-Can-a-Wellness-Technology-Company-Play-It-Smart-V4.html)) |
 | Python + SQL Notebook | Python (pandas, plotly), SQL (PostgreSQL) | [View on Kaggle](https://www.kaggle.com/code/kaiwenhuang123/bellabeat-case-study) |
 
 ---
@@ -180,14 +180,12 @@ Solution: Calculated **sleep efficiency** (total minutes asleep ÷ total time in
 
 ## Key Findings
 
-### From R — Hourly Rhythm & Heart Rate Analysis
-**1. Heart rate peaks at noon; calorie burn peaks at 5–7 PM**
-Heart rate reaches its daily high around 12–16h, while calorie burn peaks later at 17–19h. This 2–3 hour lag suggests that midday activity triggers elevated calorie burn in the hours that follow — a key window for in-app engagement nudges.
+**1. Peak activity occurs in the evening (5–7 PM)**
+Users are most active between 5–7 PM, with a secondary peak around midday. This suggests that engagement nudges and challenges timed around the evening window are most likely to align with natural user behavior.
 
 **2. Fairly Active users sit less than Very Active users**
 Counterintuitively, Fairly Active users log fewer sedentary hours than Very Active users. Consistent moderate movement distributed throughout the day appears more effective at reducing total sitting time than intense but concentrated workouts.
 
-### From Python + SQL — User Segmentation & Sleep Analysis
 **3. Users are evenly distributed across activity levels**
 27% Fairly Active, 27% Lightly Active, 24% Sedentary, and 21% Very Active — suggesting Bellabeat should design features for all activity levels, not just highly active users.
 
@@ -197,9 +195,6 @@ Very Active users burn approximately 537 more calories daily than Sedentary user
 **5. 88% of users wear their device consistently**
 29 out of 33 users wore the device for 25+ days. Device adoption is not the challenge — converting passive wearing into active behavior change is.
 
-### From Tableau — Segment-level Sleep × Activity Breakdown
-*(R's time-series data joined with SQL's user_type labels)*
-
 **6. Steps and sleep have a bidirectional relationship — and it differs by user type**
 
 *→ [View interactive segment breakdown in Tableau Dashboard](https://public.tableau.com/shared/22QGRHM8T?:display_count=n&:origin=viz_share_link)*
@@ -208,12 +203,12 @@ The aggregate view shows Poor Sleepers have higher step counts overall. But brok
 
 | Segment | Same-day: Steps → Sleep Efficiency | Next-day: Sleep Quality → Steps |
 |---------|-----------------------------------|----------------------------------|
-| Very Active | Poor Sleepers: steps ↑ → efficiency ↑ | Poor sleep → next-day steps drop sharply |
-| Fairly Active | Poor Sleepers: steps ↑ → efficiency ↑ | Minimal difference |
-| Lightly Active | Good Sleep stable; Poor Sleep slight negative | Poor Sleep slight positive |
-| Sedentary | Poor Sleepers: steps ↑ → efficiency **drops sharply** | Poor sleep → next-day steps also low |
+| Very Active | Poor Sleepers: steps ↑ → efficiency ↑ | Poor sleep → next-day steps ↑ |
+| Fairly Active | Poor Sleepers: steps ↑ → efficiency ↑ | Poor sleep → next-day steps decline gradually |
+| Lightly Active | Good Sleep and Poor Sleep both stable | Poor Sleep → next-day steps drop rapidly|
+| Sedentary | Poor Sleepers: steps ↑ → efficiency surge | Poor sleep → next-day steps drop sharply|
 
-**Interpretation:** For Sedentary users, sudden activity spikes disrupt sleep — their bodies are not yet conditioned for sustained effort. For Very Active users, same-day overexertion leads to reduced next-day capacity, suggesting accumulated fatigue. This means **sleep is both an outcome of activity and a prerequisite for it** — a bidirectional relationship that a single universal step goal cannot address.
+**Interpretation:** For most segments, more steps correlate with better same-day sleep efficiency — movement is not the enemy of sleep. The exception is Sedentary users, whose sleep efficiency surges with higher steps, suggesting strong responsiveness to even modest activity increases. For next-day capacity, poor sleep hits Lightly Active and Sedentary users hardest — their step counts drop sharply the following day. Very Active Poor Sleepers, by contrast, maintain or increase next-day steps, possibly pushing through fatigue. Sleep and activity interact differently by fitness level — one universal step goal cannot address this complexity.
 
 ---
 
@@ -222,8 +217,8 @@ The aggregate view shows Poor Sleepers have higher step counts overall. But brok
 | # | Focus | Recommendation |
 |---|-------|----------------|
 | 1 | **Personalized goals** | Set adaptive activity targets by segment — nudge Sedentary users toward gradual step increases (+500 steps/week) rather than pushing a universal 10,000-step goal that may disrupt their sleep |
-| 2 | **Timing** | Send in-app movement reminders at midday (12–14h) to leverage the natural heart rate peak and drive elevated calorie burn through the afternoon and evening |
-| 3 | **Recovery positioning** | Market the Leaf not just as an activity tracker but as a recovery monitor — for Very Active users, surface alerts when step counts may be impacting next-day sleep and performance |
+| 2 | **Evening engagement** | Launch challenges, workouts, or push notifications between 5–7 PM to align with the natural peak activity window |
+| 3 | **Recovery positioning** | Market the Leaf as a recovery monitor, not just an activity tracker — highlight sleep tracking as essential for Lightly Active and Sedentary users, where poor sleep directly reduces next-day movement capacity |
 | 4 | **Segment conversion** | Focus behavior change efforts on the Lightly → Fairly Active transition, where the calorie benefit jump (332 kcal/day) is largest and most motivating |
 | 5 | **Retention** | Re-engagement campaign targeting the 12% of Moderate/Low users with push notifications and streak rewards to build consistent wearing habits |
 
