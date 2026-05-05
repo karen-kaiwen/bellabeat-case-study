@@ -236,4 +236,4 @@ The aggregate view shows Poor Sleepers have higher step counts overall. But brok
 
 ## License
 
-MIT License — see [LICENSE](LICENSE) for details.
+MIT License
