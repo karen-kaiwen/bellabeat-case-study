@@ -10,9 +10,9 @@ Analyzing FitBit fitness tracker data to uncover behavioral trends among smart d
 ![Google Data Analytics](https://img.shields.io/badge/Google_Data_Analytics-Capstone-4285F4?logo=google&logoColor=white)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
-🔗 **[View R Markdown Case Study →]([https://karen-kaiwen.github.io/bellabeat-case-study/](https://karen-kaiwen.github.io/bellabeat-case-study/How-Can-a-Wellness-Technology-Company-Play-It-Smart-V4.html))**
+🔗 **[View R Markdown Case Study →](https://karen-kaiwen.github.io/bellabeat-case-study/)**
 🐍 **[View Python + SQL Notebook (Kaggle) →](https://www.kaggle.com/code/kaiwenhuang123/bellabeat-case-study)**
-📊 **[View Tableau Dashboard →](https://public.tableau.com/shared/22QGRHM8T?:display_count=n&:origin=viz_share_link)**
+📊 **[View Tableau Dashboard ](https://public.tableau.com/shared/22QGRHM8T?:display_count=n&:origin=viz_share_link)**
 
 ---
 
@@ -52,7 +52,7 @@ The full analysis is documented across two reports:
 
 | Report | Tools | Link |
 |--------|-------|------|
-| R Markdown Case Study | R (tidyverse) | [View Report]([https://karen-kaiwen.github.io/bellabeat-case-study/](https://karen-kaiwen.github.io/bellabeat-case-study/How-Can-a-Wellness-Technology-Company-Play-It-Smart-V4.html)) |
+| R Markdown Case Study | R (tidyverse) | [View Report](https://karen-kaiwen.github.io/bellabeat-case-study/) |
 | Python + SQL Notebook | Python (pandas, plotly), SQL (PostgreSQL) | [View on Kaggle](https://www.kaggle.com/code/kaiwenhuang123/bellabeat-case-study) |
 
 ---
