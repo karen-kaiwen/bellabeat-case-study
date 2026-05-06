@@ -231,7 +231,6 @@ The aggregate view shows Poor Sleepers have higher step counts overall. But brok
 - **Data from 2016** — user behavior patterns may have shifted significantly in the past decade
 - **No demographic metadata** — no gender, age, or location data; limits direct applicability to Bellabeat's female-focused audience
 - **Potential self-selection bias** — participants who consented to share data may already be more health-conscious than average users
-- **Sleep data coverage** — only 24 of 33 users have sleep records, limiting the sleep analysis sample
 
 ---
 
