@@ -1,4 +1,5 @@
 # Bellabeat Smart Device Analysis
+**How Can a Wellness Technology Company Play It Smart?**
 
 Analyzing FitBit fitness tracker data to uncover behavioral trends among smart device users, and applying those insights to inform Bellabeat's marketing strategy for the **Leaf wellness tracker**.
 
@@ -91,25 +92,25 @@ FitBit Dataset (Kaggle, CC0)
   Hourly_Rhythm_Cleaned.csv
          │                                             │
          └─────────────────────────────────────────────┘
-                               │
-                               ▼
-                    Tableau Dashboard
+                                 │
+                                 ▼
+                        Tableau Dashboard
          (R outputs provide time-series metrics;
           SQL outputs provide user classification labels;
           Tableau JOINs both to enable segment-level analysis)
-                               │
-                  ┌────────────┼────────────┐
-                  ▼            ▼            ▼
-            KPI Overview   Behavior     Relationships
-            · Avg Steps    Insights     Between Metrics
-            · Avg Sleep    · Active     · Steps vs.
-            · Wear Rate      time         Sleep Efficiency
-                           · Calories   · Next-day Steps
-                             by type      vs. Sleep
-                           · Sedentary
-                             by type
-                               │
-                               ▼
+                                 │ 
+          ┌──────────────────────┼────────────────────────────────┐
+          ▼                      ▼                                ▼
+    KPI Overview         Behavior Insights             Relationships Between Metrics
+    · Avg Steps          · User Activity Segments      · Calories by User Type
+    · Avg Sleep          · Active Time                 · Sedentary Time by User Type
+    · Active Time        · Activity Time Distribution  · Steps vs. Sleep Efficiency      
+    · Sedentary Time                                   · Sleep Efficiency vs. Next Day Steps
+    · Wear Rate                
+         │                       │                                 │
+         └─────────────────────────────────────────────────────────┘
+                                 │
+                                 ▼
                   6 Key Findings + 5 Recommendations
 ```
 
