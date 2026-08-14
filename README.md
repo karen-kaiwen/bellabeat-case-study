@@ -46,7 +46,7 @@ This project uses four tools in a single integrated pipeline, each with a distin
 |------|---------------|--------|
 | **R** | Time-series cleaning & hourly rhythm analysis | `Daily_Holistic_Cleaned.csv`, `Hourly_Rhythm_Cleaned.csv` |
 | **Python** | Data cleaning, type conversion, multi-file merging | `daily_activity`, `heartrate`, `hourly`, `sleep` loaded into PostgreSQL |
-| **SQL (PostgreSQL / Supabase)** | User segmentation, sleep efficiency, wear frequency classification | `user_segments`, `user_sleep`, `user_time` |
+| **SQL** | User segmentation, sleep efficiency, wear frequency classification | `user_segments`, `user_sleep`, `user_time` |
 | **Tableau** | Joins R outputs + SQL outputs into interactive dashboard | Final visualizations & stakeholder communication |
 
 The full analysis is documented across two reports:
