@@ -74,7 +74,7 @@ FitBit Dataset (Kaggle, CC0)
   · Standardize date formats                 · Type conversion & duplicate removal
   · Remove duplicates                        · Heartrate downsampled: seconds → hourly avg
   · Heartrate: seconds → hourly avg          · Multi-file merge (hourly tables)
-  · Master table construction:               · Load 4 tables into Supabase via SQLAlchemy:
+  · Master table construction:               
     daily_activity, heartrate, hourly, sleep
     - Daily_Holistic                         · SQL Views (PostgreSQL):
       dailyActivity LEFT JOIN sleepDay         - user_segments  (CASE WHEN on AVG steps)
@@ -124,7 +124,7 @@ Each tool handled a distinct, non-overlapping part of the pipeline:
 |------|---------------|------------|
 | **R** | Time-series cleaning; hourly rhythm analysis; heart rate vs. calorie lag; master table construction | `Daily_Holistic_Cleaned.csv`, `Hourly_Rhythm_Cleaned.csv` |
 | **Python** | Data cleaning automation; type conversion; duplicate removal; multi-file merging; Plotly visualizations | `daily_activity`, `heartrate`, `hourly`, `sleep` loaded into PostgreSQL |
-| **SQL (PostgreSQL)** | User segmentation (CASE WHEN); sleep efficiency classification; LEAD() window function for next-day alignment; wear frequency | `user_segments`, `user_sleep`, `user_time` |
+| **SQL** | User segmentation (CASE WHEN); sleep efficiency classification; LEAD() window function for next-day alignment; wear frequency | `user_segments`, `user_sleep`, `user_time` |
 | **Tableau** | Joins R's time-series data with SQL's user labels to enable segment-level analysis; interactive stakeholder dashboard | Final dashboard |
 
 ---
